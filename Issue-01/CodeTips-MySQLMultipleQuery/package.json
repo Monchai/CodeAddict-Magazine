@@ -1,0 +1,26 @@
+{
+  "name": "codetips-01",
+  "version": "1.0.0",
+  "description": "demo code for code tips 01 : mysql multiple query",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Monchai/CodeAddict-Magazine.git"
+  },
+  "keywords": [
+    "CodeAddict"
+  ],
+  "author": "Monchai Hirunbenchasub <monchai@outlook.com:>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Monchai/CodeAddict-Magazine/issues"
+  },
+  "homepage": "https://github.com/Monchai/CodeAddict-Magazine#readme"
+  , "dependencies": {
+    "express": "*",
+      "mysql" : "*"
+  }
+}
