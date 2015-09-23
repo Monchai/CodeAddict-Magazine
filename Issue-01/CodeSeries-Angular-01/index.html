@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Code Series : AngularJS 01/03</title>
+</head>
+<body ng-app="FirstApp">
+    <div ng-controller="FirstController">
+        <h1>{{Title}}</h1>
+        <h2>{{Greetting}}</h2>
+        <input type="text" ng-model="PersonTemp" />
+        <input type="button" value="Change Name" ng-click="changeName()"><br />
+        <h3 ng-show="PersonName.length>0">Hello : {{PersonName}}</h3>
+    </div>
+</body>
+</html>
+<script src="scripts/angular/angular.js"></script>
+<script>
+    var app = angular.module("FirstApp", []);
+    app.controller("FirstController", function($scope){
+        $scope.Title        = "Code Series : AngularJS 01/03";
+        $scope.Greetting    = "Hello เทอว์";
+        $scope.PersonName   = "";
+        $scope.PersonTemp   = "";
+        $scope.changeName   = function(){
+            $scope.PersonName = $scope.PersonTemp;
+        }
+    });
+</script>
+

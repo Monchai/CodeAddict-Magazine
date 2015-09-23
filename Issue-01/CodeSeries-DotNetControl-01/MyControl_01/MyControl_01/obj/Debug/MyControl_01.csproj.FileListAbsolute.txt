@@ -1,0 +1,10 @@
+D:\GitProject\CodeAddictMagazine\Issue-01\CodeSeries-DotNetControl-01\MyControl_01\MyControl_01\bin\Debug\MyControl_01.exe
+D:\GitProject\CodeAddictMagazine\Issue-01\CodeSeries-DotNetControl-01\MyControl_01\MyControl_01\bin\Debug\MyControl_01.pdb
+D:\GitProject\CodeAddictMagazine\Issue-01\CodeSeries-DotNetControl-01\MyControl_01\MyControl_01\obj\Debug\MyControl_01.ControlUI.SimpleChart.resources
+D:\GitProject\CodeAddictMagazine\Issue-01\CodeSeries-DotNetControl-01\MyControl_01\MyControl_01\obj\Debug\MyControl_01.Properties.Resources.resources
+D:\GitProject\CodeAddictMagazine\Issue-01\CodeSeries-DotNetControl-01\MyControl_01\MyControl_01\obj\Debug\MyControl_01.csproj.GenerateResource.Cache
+D:\GitProject\CodeAddictMagazine\Issue-01\CodeSeries-DotNetControl-01\MyControl_01\MyControl_01\obj\Debug\MyControl_01.exe
+D:\GitProject\CodeAddictMagazine\Issue-01\CodeSeries-DotNetControl-01\MyControl_01\MyControl_01\obj\Debug\MyControl_01.pdb
+D:\GitProject\CodeAddictMagazine\Issue-01\CodeSeries-DotNetControl-01\MyControl_01\MyControl_01\obj\Debug\MyControl_01.Form1.resources
+D:\GitProject\CodeAddictMagazine\Issue-01\CodeSeries-DotNetControl-01\MyControl_01\MyControl_01\obj\Debug\MyControl_01.csprojResolveAssemblyReference.cache
+D:\GitProject\CodeAddictMagazine\Issue-01\CodeSeries-DotNetControl-01\MyControl_01\MyControl_01\obj\Debug\MyControl_01.Form2.resources

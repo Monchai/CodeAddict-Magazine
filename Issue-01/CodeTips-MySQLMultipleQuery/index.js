@@ -32,7 +32,7 @@ app.get("/article/:id", function(req, res, next){
     sql+=     " where header_id = "+id+";";
 
     db.query(sql, function(err, results){
-        console.log(results);
+        
         var header = results[0][0];
         var details = results[1];
         header.details = details;
