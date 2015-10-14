@@ -1,0 +1,31 @@
+<head>
+  <title>TodoList</title>
+</head>
+<body>
+  <h1>Todo List !!!!</h1>
+  {{> todoList}}
+  <hr />
+  {{> todoCommand}}
+</body>
+
+<template name="todoCommand">
+  <form>      
+      <div>
+          Job Name : <input type="text" name="txtJobName" value="" />
+      </div>
+      <div>
+          Job By : <input type="text" name="txtJobBy" value="" />    
+      </div>      
+      <input type="submit" value="Save" />
+  </form>
+</template>
+
+<template name="todoList">
+    <ul>
+        {{#each getTodoList}}
+        <li>
+            Job Name : {{job_name}} : {{job_by}}
+        </li>        
+        {{/each}}
+    </ul>
+</template>

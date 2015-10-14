@@ -1,0 +1,149 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Code Series : AngularJS 02/03</title>
+    
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.css" />
+</head>
+<body ng-app="FirstApp">
+    <div ng-controller="FirstController" ng-init="init()">
+       
+        <button ng-click="init()" class="btn btn-info">refresh</button>
+        <table class="table table-striped">
+            <thead>
+               <tr>
+                   <td></td>
+                   <td><input type="text" ng-model="SearchProduct.code" /></td>
+                   <td><input type="text" ng-model="SearchProduct.name" /></td>
+                   <td></td>
+               </tr>
+                <tr>
+                    <th><button class="btn btn-link">No.</button></th>
+                    <th>
+                        <button class="btn btn-link" 
+                        ng-click="setOrder('code')">Code</button>
+                    </th>
+                    <th>
+                        <button class="btn btn-link" 
+                        ng-click="setOrder('name')">Name</button>
+                    </th>
+                    <th>
+                        <button class="btn btn-link" 
+                        ng-click="setOrder('qty')">QTY</button>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="p in Products | filter : {
+                                   code : SearchProduct.code
+                                   , name : SearchProduct.name
+                               } | orderBy : orderFieldName ">
+                    <td>{{$index+1}}</td>
+                    <td>{{p.code}}</td>
+                    <td>{{p.name}}</td>
+                    <td>{{p.qty}} {{p.unitname}}</td>
+                </tr>                
+            </tbody>            
+            <tfoot>
+                <tr ng-show="isNewMode">
+                    <td>
+                        <button ng-click="saveProduct()" 
+                        class="btn btn-warning">Save</button>
+                        <button ng-click="isNewMode=false" 
+                        class="btn btn-danger">Cancel</button>                        
+                    </td>
+                    <td>
+                        <input class="form-control" type="text" 
+                        ng-model="CurrentProduct.code" />
+                    </td>
+                    <td>
+                        <input class="form-control" type="text" 
+                        ng-model="CurrentProduct.name" />
+                    </td>
+                    <td>
+                        <input class="form-control" type="text" 
+                        placeholder="QTY" ng-model="CurrentProduct.qty" />
+                        <input class="form-control" type="text" 
+                        placeholder="unit name" ng-model="CurrentProduct.unitname" />
+                    </td>
+                </tr>  
+                <tr>
+                    <td colspan="2">
+                        <button ng-hide="isNewMode" ng-click="isNewMode=true" 
+                        class="btn btn-info">New</button>
+                    </td>
+                    <td colspan="2"> Item Count : {{Products.length}}</td>
+                </tr>
+            </tfoot>
+        </table>
+        
+        
+    </div>
+</body>
+</html>
+<script src="scripts/angular/angular.js"></script>
+<script>
+    var app = angular.module("FirstApp", []);
+    app.controller("FirstController", function($scope){
+        
+        $scope.SearchProduct = {
+            code : "",
+            name : ""
+        };
+        
+        $scope.isNewMode = false;
+        $scope.CurrentProduct = {
+            code : ""
+            , name : ""
+            , qty : 0
+            , unitname : ""
+        }
+        $scope.Products = [];
+        
+        $scope.orderFieldName = "";
+        
+        $scope.setOrder = function(fieldName){
+            if($scope.orderFieldName==fieldName){
+                $scope.orderFieldName = "-"+fieldName;
+            }else{
+                $scope.orderFieldName = fieldName;
+            }
+        }
+        
+        $scope.init = function(){
+            $scope.Products.push({
+                code : "P001",
+                name : "Coke",
+                qty : 100,
+                unitname : "bottle"
+            });
+            $scope.Products.push({
+                code : "P002",
+                name : "Pepsi", 
+                qty : 50, 
+                unitname : "bottle" 
+            });
+            $scope.Products.push({
+                code : "P003", 
+                name : "ichiton", 
+                qty : 18, 
+                unitname : "bottle" 
+            });
+        }
+        $scope.saveProduct = function(){
+            $scope.Products.push($scope.CurrentProduct);
+            $scope.CurrentProduct = {
+                code : ""
+                , name : ""
+                , qty : 0
+                , unitname : ""
+            }
+            $scope.isNewMode = false;
+        }
+    });
+</script>
+
+<script src="bootstrap/js/jquery.js"></script>
+<script src="bootstrap/js/bootstrap.js"></script>

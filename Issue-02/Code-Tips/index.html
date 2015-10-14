@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Code Tips #02 : [be] Lazy.js</title>
+</head>
+<body>
+    <div style="height: 2000px; background-color: #808080;"></div>
+    <img class="b-lazy"
+	 src="images/preload.png"
+	 data-src="images/large.png"
+	 data-src-small="images/small.png"
+	 alt="Image description" />
+    
+</body>
+</html>
+<script src="scripts/jquery.js"></script>
+<script src="scripts/blazy.js"></script>
+
+<script>
+$(function(){
+
+    var blazy = new Blazy({
+        success : function(){
+        
+        }, error : function(data){
+            alert(data);
+        }
+    });
+
+});
+   
+//    http://dinbror.dk/blazy/
+//    https://github.com/dinbror/blazy
+    
+</script>
