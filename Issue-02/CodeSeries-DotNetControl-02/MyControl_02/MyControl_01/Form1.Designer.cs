@@ -28,9 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.simpleChart1 = new MyControl_01.ControlUI.SimpleChart();
             this.button1 = new System.Windows.Forms.Button();
+            this.simpleChart1 = new MyControl_01.ControlUI.SimpleChart();
             this.SuspendLayout();
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(60, 284);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(80, 39);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // simpleChart1
             // 
@@ -43,16 +53,7 @@
             this.simpleChart1.Name = "simpleChart1";
             this.simpleChart1.Size = new System.Drawing.Size(321, 204);
             this.simpleChart1.TabIndex = 0;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(60, 284);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(80, 39);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.simpleChart1.onItemClick += new MyControl_01.ControlUI.SimpleChart.ItemClick(this.simpleChart1_onItemClick);
             // 
             // Form1
             // 

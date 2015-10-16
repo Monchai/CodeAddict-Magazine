@@ -9,11 +9,17 @@ using System.Windows.Forms;
 
 namespace MyControl_01.ControlUI
 {
+    [DefaultEvent("onItemClick")]
     public partial class SimpleChart : UserControl
     {
+        public delegate void ItemClick(SimpleChartItem item);
+        public event ItemClick onItemClick;
+
         private Font ChartFont = new Font("tahoma", 18f, FontStyle.Bold);
         private SimpleChartDataSource data;
         private float MaxData = 0;
+
+        
 
         public SimpleChart()
         {
@@ -64,7 +70,6 @@ namespace MyControl_01.ControlUI
         }
         private Button createButtonData(SimpleChartItem item)
         {
-
             Button result = new Button();
             result.Dock = DockStyle.Bottom;
             result.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -73,15 +78,22 @@ namespace MyControl_01.ControlUI
             result.Text = item.Value.ToString();
             result.BackColor = item.Color;
             result.Font = this.ChartFont;
-
-            result.Tag = item.ID;
-
-            if (item.onItemClick != null)
-            {
-                result.Click += item.OnClickItem;
-            }
-
+            //result.Tag = item.ID;
+            result.Tag = item;
+            result.Click += result_Click;       
+                 
             return result;
+        }
+        void result_Click(object sender, EventArgs e)
+        {
+            if (this.onItemClick != null)
+            {
+                Button cmdSource = (Button)sender;
+                SimpleChartItem source = (SimpleChartItem)cmdSource.Tag;
+
+                this.onItemClick(source);
+
+            }
         }
         private void redrawHeight()
         {

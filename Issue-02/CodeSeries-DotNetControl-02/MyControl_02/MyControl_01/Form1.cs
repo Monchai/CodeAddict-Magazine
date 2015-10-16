@@ -46,5 +46,16 @@ namespace MyControl_01
             MessageBox.Show(cmd.Tag.ToString());
         }
 
+        private void simpleChart1_onItemClick(ControlUI.SimpleChartItem item)
+        {
+            string message = "ID : " + item.ID.ToString();
+            message += Environment.NewLine + "Label : " + item.Label;
+            message += Environment.NewLine + "Value : " + item.Value;
+
+            MessageBox.Show(message);
+        }
+
+
+
     }
 }
