@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Code Tips : Blazy.js</title>
+    
+    <style>
+        img{
+            display: block;
+            margin: 200px auto;
+        }
+        #div-message{
+            display: block;
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            min-height: 50px;
+            background-color: rgba(80, 80, 80, 0.51);
+            color:aqua;
+            font-size: 18pt;
+        }
+    </style>
+    
+</head>
+<body>
+    
+    <div id="div-message">&nbsp;</div>
+    
+    <img class="b-lazy" id="img-001" alt="image 001"
+    src="images/thumbnail/img-001.jpg"
+    data-src-small="images/small/img-001.jpg"
+    data-src="http://www.code-addict.com/demo-images/img-001.jpg" />
+
+    <img class="b-lazy" id="img-002" alt="image 002"
+    src="images/thumbnail/img-002.jpg"
+    data-src-small="images/small/img-002.jpg"
+    data-src="http://www.code-addict.com/demo-images/img-002.jpg" />   
+
+    <img class="b-lazy" id="img-003" alt="image 00-"
+    src="images/thumbnail/img-003.jpg"
+    data-src-small="images/small/img-003.jpg"
+    data-src="http://www.code-addict.com/demo-images/img-003.jpg" />    
+
+    <img class="b-lazy" id="img-004" alt="image 00ภ"
+    src="images/thumbnail/img-004.jpg"
+    data-src-small="images/small/img-004.jpg"
+    data-src="http://www.code-addict.com/demo-images/img-004.jpg" />    
+
+    <img class="b-lazy" id="img-005" alt="image 005"
+    src="images/thumbnail/img-005.jpg"
+    data-src-small="images/small/img-005.jpg"
+    data-src="http://www.code-addict.com/demo-images/img-005.jpg" />    
+    
+</body>
+</html>
+<script src="scripts/blazy.min.js"></script>
+<script>
+
+//    var bLazy = new Blazy();
+    
+//    var bLazy = new Blazy({
+//        success : function(params){
+//            console.log(params);            
+//        }
+//    });    
+    
+    var bLazy = new Blazy({
+        success : function(obj){
+            var img = document.getElementById("div-message")
+            img.innerHTML = obj.id+" : Loaded.";
+        }
+    });    
+    
+    
+</script>

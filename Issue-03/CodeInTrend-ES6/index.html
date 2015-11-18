@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Code InTrend : ECMAScript6</title>
+    <style>
+        .content-box{
+            margin: 10px;
+            border-radius: 10px;
+            border: 1px solid lightgray;
+        }
+        .title{
+            font-weight: bold;
+            margin-bottom: 10px;
+            border-radius: 8px 8px 0px 0px;
+            padding: 10px;
+            background-color: lightgray;
+        }
+        .content-box > p{
+            padding: 10px;
+        }
+        .red{
+            background-color: lightcoral;
+        }
+    </style>
+</head>
+<body>
+    <div class="content-box">
+       <div class="title">Const</div>
+       <p>
+            VAT : <span id="sp-vat"></span>   
+       </p>        
+    </div>
+    
+    <div class="content-box">
+       <div class="title">Block-Scoped Variable</div>
+       <p id="p-block-scope-var"></p>
+    </div>
+    
+    <div class="content-box">
+       <div class="title">Arrow Functions</div>
+       <p>
+           Total Price : <span id="sp-total-price"></span> บาท
+       </p>
+    </div>
+    
+    <div class="content-box">
+       <div class="title">Default Parameter</div>
+       <p id="p-demo-parameter"></p>
+    </div>
+    
+    <div class="content-box">
+       <div class="title">String Template</div>
+       <p id="p-demo-template"></p>
+    </div>
+    
+    <div class="content-box">
+       <div class="title red">OOP</div>
+       <p></p>
+    </div>    
+</body>
+</html>
+<script>
+    'use strict'
+    // ------------------------- Demo Const ----------------------------------------
+    const VAT = 7;
+    document.getElementById("sp-vat").innerHTML = VAT;
+    // ------------------------- Demo Block-Scoped Variable & Function -------------    
+    var collect_string = "";    
+    
+    {   // start block
+        let collect_data = 10;
+        collect_string += "collect_data out loop : "+collect_data+"<br />";
+        collect_string += "-------------------------------------------<br />";        
+        
+        for(let collect_data=10; collect_data<=100; collect_data+=10){
+            collect_string += "collect_data in loop : "+collect_data+"<br />";
+        }
+        
+        collect_string += "-------------------------------------------<br />";        
+        collect_string += "collect_data out loop : "+collect_data+"<br />";
+    }   // end block
+    
+    collect_string += "===========================================<br />";   
+    
+    try{
+        collect_string += "collect_data out function : "+collect_data+"<br />";    
+    }catch(e){
+        collect_string += "collect_data out function : undefined<br />";    
+    }
+        
+    document.getElementById("p-block-scope-var").innerHTML = collect_string;
+    // -----------------------------------------------------------------------------
+    // function calTotal(ProductPrice){
+    //     return ProductPrice + ((ProductPrice / 100) * VAT);
+    // }
+    var productPrice = [100, 200];
+//    var totalPrice = calTotal(100);
+    var totalPrice = productPrice.map(p => p + ( p / 100 * VAT ) );
+    console.log(totalPrice);
+    document.getElementById("sp-total-price").innerHTML = totalPrice[0]+" และ "+totalPrice[1];
+    // -----------------------------------------------------------------------------
+    // Chrome not support default parameter
+    // function hello(yourName="No name"){
+    function hello(yourName){
+        if(yourName==undefined) yourName = "No Name";
+        return "Hello : "+yourName;
+    }
+    // -----------------------------------------------------------------------------
+    // document.getElementById("div-with-parameter").innerHTML = hello("Code Addict");
+    // document.getElementById("div-without-parameter").innerHTML = hello();
+    document.getElementById("p-demo-parameter").innerHTML = "With Parameter ["+hello("Code Addict")+"]<br />Without Parameter ["+hello()+"]";
+    // -----------------------------------------------------------------------------
+    var content = `
+        เฮ้ !!!! ${hello("Reader")}<br />
+        Code Addict Market มี Product อยู่ 2 ตัวราคา ${productPrice[0]} และ ${productPrice[1]}<br />
+        ถ้าคิดรวม VAT ที่ ${VAT} ออกมาแล้วราคาจะอยู่ที่ ${totalPrice[0]} และ ${totalPrice[1]} ตามลำดับ<br />
+    `;
+//    var content = `เฮ้ !!! ${hello("Reader")}`;
+    document.getElementById("p-demo-template").innerHTML = content;
+    // -----------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------
+
+</script>

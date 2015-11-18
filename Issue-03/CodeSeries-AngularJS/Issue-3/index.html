@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Code Series : AngularJS 03/03</title>
+    
+</head>
+<body ng-app="CodeSeries">
+   <div ng-controller="Angular-03" ng-init="init()">
+       <table ng-if="!isEditMode">
+           <thead>
+               <tr><th>No</th><th>Code</th><th>Name</th></tr>
+           </thead>
+           <tbody>
+               <tr ng-repeat="d in Data">
+                   <td>{{$index+1}}</td>
+                   <td>{{d.code}}</td>
+                   <td>{{d.name}}</td>
+               </tr>
+           </tbody>
+           <tfoot>
+               <tr><td colspan="3">
+               <button ng-click="add_data()">New...</button>
+               </td></tr>
+           </tfoot>
+       </table>
+       <div ng-if="isEditMode">
+           Code : <input type="text" ng-model="CurrentData.code" /><br />
+           Name : <input type="text" ng-model="CurrentData.name" /><br />
+           <button ng-click="cancel_data()">Cancel</button>
+           <button ng-click="save_data()">Save</button>
+       </div>
+   </div>
+</body>
+</html>
+<script src="scripts/jquery.js"></script>
+<script src="scripts/angular.js"></script>
+<script>
+    var app = angular.module("CodeSeries", []);
+    app.controller("Angular-03", function($scope, $http){
+        $scope.Data = [];
+        $scope.isEditMode = false;
+        $scope.CurrentData = {
+            code : "",
+            name : ""
+        }
+        //---------------------------------------------
+        $scope.init = function(){
+            $scope.isEditMode = false;
+            var url = "/Issue-3/api/get_data.php";            
+            $http.get(url).error(function(response){
+                alert("Error");
+                console.log(response);    
+            }).success(function(result){
+                $scope.Data = result;
+            });
+        }
+        //---------------------------------------------
+        $scope.add_data = function(){
+            $scope.isEditMode = true;
+        }
+        //---------------------------------------------
+        $scope.cancel_data = function(){
+            $scope.isEditMode = false;
+        }
+        //---------------------------------------------
+        $scope.save_data = function(){
+            var url = "/Issue-3/api/add_data.php";
+//            $http.post(url, $scope.CurrentData).error(function(response){
+//                alert("Error Save Data !!!");
+//                console.log(response);
+//            }).success(function(result){
+//                alert(result);
+//                $scope.init();
+//            });
+            $.post(url, $scope.CurrentData).fail(function(response){
+                alert("Error Save Data !!!");
+                console.log(response);               
+            }).done(function(result){
+                alert(result);
+                $scope.$apply();
+                $scope.init();              
+            });
+        }
+        //---------------------------------------------
+    });
+</script>
